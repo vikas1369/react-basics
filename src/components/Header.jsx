@@ -1,4 +1,5 @@
 import reactImage from "../assets/react-core-concepts.png";
+import './Header.css'
 const arr = ["Crucial", "Fundamental", "Important"];
 function getHeading(){
     const index = Math.floor(Math.random() * arr.length);
