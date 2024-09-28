@@ -7,8 +7,9 @@ import TabButton from "./components/TabButton";
 
 
 function App() {
-    function handleSelect(){
+    function handleSelect(selectedButton){
         console.log("Button Selected");
+        console.log(selectedButton);
     }
 
     return (
@@ -40,7 +41,7 @@ function App() {
                 <section id="examples">
                     <h2>Examples</h2>
                     <menu>
-                        <TabButton onSelect={handleSelect}>Components</TabButton>
+                        <TabButton onSelect={() => handleSelect('Components')}>Components</TabButton>
                         <TabButton onSelect={handleSelect}>JSX</TabButton>
                         <TabButton onSelect={handleSelect}>Props</TabButton>
                         <TabButton onSelect={handleSelect}>State</TabButton>
