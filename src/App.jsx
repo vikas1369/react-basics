@@ -4,11 +4,15 @@ import {CORE_CONCEPTS} from './data'
 import Header from './components/Header'
 import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
-
+import {useState} from 'react';
 
 function App() {
+    console.log("App rendered")
+    //States are React variables which are bound to the Component that when changed causes the component to be re-rendered
+    const[selectedTopic, setSelectedTopic] = useState("Click on button");//useState should be called inside the Component function and should be at the top level not inside some function
     function handleSelect(selectedButton){
         console.log("Button Selected");
+        setSelectedTopic(selectedButton);
         console.log(selectedButton);
     }
 
@@ -42,11 +46,11 @@ function App() {
                     <h2>Examples</h2>
                     <menu>
                         <TabButton onSelect={() => handleSelect('Components')}>Components</TabButton>
-                        <TabButton onSelect={handleSelect}>JSX</TabButton>
-                        <TabButton onSelect={handleSelect}>Props</TabButton>
-                        <TabButton onSelect={handleSelect}>State</TabButton>
+                        <TabButton onSelect={() => handleSelect('JSX')}>JSX</TabButton>
+                        <TabButton onSelect={() => handleSelect('Props')}>Props</TabButton>
+                        <TabButton onSelect={() => handleSelect('TabButton')}>State</TabButton>
                     </menu>
-                    Dynamic Content
+                    {selectedTopic}
                 </section>
             </main>
         </div>
