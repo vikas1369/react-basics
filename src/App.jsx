@@ -10,11 +10,22 @@ import {EXAMPLES} from "./data-with-examples";
 function App() {
     console.log("App rendered")
     //States are React variables which are bound to the Component that when changed causes the component to be re-rendered
-    const[selectedTopic, setSelectedTopic] = useState();//useState should be called inside the Component function and should be at the top level not inside some function
-    function handleSelect(selectedButton){
+    const [selectedTopic, setSelectedTopic] = useState();//useState should be called inside the Component function and should be at the top level not inside some function
+    function handleSelect(selectedButton) {
         console.log("Button Selected");
         setSelectedTopic(selectedButton);
         console.log(selectedButton);
+    }
+
+    let tabContect = <p>Please select a topic </p>;
+    if(selectedTopic){
+        tabContect =  (<div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+                            <code>{EXAMPLES[selectedTopic].code}</code>
+                        </pre>
+        </div>);
     }
 
     return (
@@ -22,7 +33,7 @@ function App() {
             <Header/>
             <main>
                 <section id="core-concepts">
-                <h2>Core Concept</h2>
+                    <h2>Core Concept</h2>
                     <ul>
                         <CoreConcept {...CORE_CONCEPTS[0]}//If property name in CORE_CONCEPTS obj matches with the prop names of the component
                         />
@@ -50,18 +61,7 @@ function App() {
                         <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
                         <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
                     </menu>
-                    {!selectedTopic && <p>Please select a topic </p> }
-                    {selectedTopic && // When applying logical operator it should be applied on the some parent html tag not on tags which are running in parallel like <p></p><p></p>
-                        //If condition evaluates to true because of using && it will output the statement after &&
-                        (<div id="tab-content">
-                     <h3>{EXAMPLES[selectedTopic].title}</h3>
-                        <p>{EXAMPLES[selectedTopic].description}</p>
-                        <pre>
-                            <code>{EXAMPLES[selectedTopic].code}</code>
-                        </pre>
-                    </div>)
-                    }
-                    {selectedTopic}
+                    {tabContect}
                 </section>
             </main>
         </div>
