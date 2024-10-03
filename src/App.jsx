@@ -50,8 +50,9 @@ function App() {
                         <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
                         <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
                     </menu>
-                    {!selectedTopic ? <p>Please select a topic </p> : null}
-                    {selectedTopic ?// When applying logical operator it should be applied on the some parent html tag not on tags which are running in parallel like <p></p><p></p>
+                    {!selectedTopic && <p>Please select a topic </p> }
+                    {selectedTopic && // When applying logical operator it should be applied on the some parent html tag not on tags which are running in parallel like <p></p><p></p>
+                        //If condition evaluates to true because of using && it will output the statement after &&
                         (<div id="tab-content">
                      <h3>{EXAMPLES[selectedTopic].title}</h3>
                         <p>{EXAMPLES[selectedTopic].description}</p>
@@ -59,7 +60,6 @@ function App() {
                             <code>{EXAMPLES[selectedTopic].code}</code>
                         </pre>
                     </div>)
-                        : null
                     }
                     {selectedTopic}
                 </section>
