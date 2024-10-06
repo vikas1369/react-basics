@@ -35,23 +35,7 @@ function App() {
                 <section id="core-concepts">
                     <h2>Core Concept</h2>
                     <ul>
-                        <CoreConcept {...CORE_CONCEPTS[0]}//If property name in CORE_CONCEPTS obj matches with the prop names of the component
-                        />
-                        <CoreConcept
-                            title={CORE_CONCEPTS[1].title}
-                            description={CORE_CONCEPTS[1].description}
-                            image={CORE_CONCEPTS[1].image}
-                        />
-                        <CoreConcept
-                            title={CORE_CONCEPTS[2].title}
-                            description={CORE_CONCEPTS[2].description}
-                            image={CORE_CONCEPTS[2].image}
-                        />
-                        <CoreConcept
-                            title={CORE_CONCEPTS[3].title}
-                            description={CORE_CONCEPTS[3].description}
-                            image={CORE_CONCEPTS[3].image}
-                        />
+                        {CORE_CONCEPTS.map((coreConcept) => <CoreConcept key={coreConcept.title} {...coreConcept}/>)}
                     </ul>
                 </section>
                 <section id="examples">
