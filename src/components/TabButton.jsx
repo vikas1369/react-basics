@@ -1,4 +1,4 @@
-export default function ({children, onSelect}) {
+export default function ({children, onSelect, isSelected}) {
 
-    return <li><button onClick={onSelect}>{children}</button></li>;//
+    return <li><button className={isSelected ? 'active' : '' } onClick={onSelect}>{children}</button></li>;//
 }
